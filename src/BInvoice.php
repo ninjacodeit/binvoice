@@ -1,6 +1,6 @@
 <?php
 
-namespace NinjaCodeIT\BInvoice;
+namespace NinjaCodeIT\Binvoice;
 
 class Invoice {
 
