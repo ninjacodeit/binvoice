@@ -1,0 +1,21 @@
+{
+  "name": "ninjacodeit/BInvoice",
+  "description": "",
+  "license": "MIT",
+  "keywords": ["binvoice"],
+  "authors": [
+    {
+      "name": "Jakub Gałyga",
+      "email": "jakub@ninjacode.pl"
+    }
+  ],
+  "require": {},
+  "require-dev": {
+    "phpunit/phpunit": "4.0.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "NinjaCodeIT\\BInvoice\\": "src"
+    }
+  }
+}
