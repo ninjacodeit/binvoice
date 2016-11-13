@@ -14,8 +14,8 @@
     "phpunit/phpunit": "4.0.*"
   },
   "autoload": {
-    "psr-4": {
-      "NinjaCodeIT\\BInvoice\\": "src"
+    "psr-0": {
+      "NinjaCodeIT\\BInovice": "src/"
     }
   }
 }
