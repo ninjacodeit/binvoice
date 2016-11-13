@@ -285,7 +285,7 @@ class Invoice extends Rotation
             $width_other = ($this->document['w']-$this->margins['l']-$this->margins['r']-$this->firstColumnWidth-($this->columns*$this->columnSpacing))/($this->columns-1);
             $this->SetTextColor(50,50,50);
             $this->Ln(12);
-            $this->SetFont($this->font,'',9);
+            $this->SetFont($this->font,'',7);
             $this->Cell(1,10,'',0,0,'L',0);
             $this->Cell($this->firstColumnWidth,10,iconv("UTF-8", "ISO-8859-2",strtoupper($this->l['product'])),0,0,'L',0);
             $this->Cell($this->columnSpacing,10,'',0,0,'L',0);
