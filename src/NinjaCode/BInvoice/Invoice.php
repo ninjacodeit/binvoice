@@ -112,7 +112,7 @@ class Invoice extends Rotation
         $p['description'] 	= $this->br2nl($description);
         $p['vat']			= $vat;
         if(is_numeric($vat)) {
-            $p['vat']		= $this->currency.' '.number_format($vat,2,$this->referenceformat[0],$this->referenceformat[1]);
+            $p['vat']		= number_format($vat,2,$this->referenceformat[0],$this->referenceformat[1]). ' '. $this->currency;
         }
         $p['quantity'] 		= $quantity;
         $p['price']			= $price;
@@ -122,7 +122,7 @@ class Invoice extends Rotation
             $this->firstColumnWidth = 58;
             $p['discount'] = $discount;
             if(is_numeric($discount)) {
-                $p['discount']	= $this->currency.' '.number_format($discount,2,$this->referenceformat[0],$this->referenceformat[1]);
+                $p['discount']	= number_format($discount,2,$this->referenceformat[0],$this->referenceformat[1]). ' '. $this->currency;
             }
             $this->discountField = true;
             $this->columns = 6;
@@ -136,7 +136,7 @@ class Invoice extends Rotation
         $t['name']			= $name;
         $t['value']			= $value;
         if(is_numeric($value)) {
-            $t['value']			= $this->currency.' '.number_format($value,2,$this->referenceformat[0],$this->referenceformat[1]);
+            $t['value']			= number_format($value,2,$this->referenceformat[0],$this->referenceformat[1]). ' '. $this->currency;
         }
         $t['colored']		= $colored;
         $this->totals[]		= $t;
@@ -367,7 +367,7 @@ class Invoice extends Rotation
                 $this->Cell($this->columnSpacing,$cHeight,'',0,0,'L',0);
                 $this->Cell($width_other,$cHeight,iconv('UTF-8', 'ISO-8859-2', $item['vat']),0,0,'C',1);
                 $this->Cell($this->columnSpacing,$cHeight,'',0,0,'L',0);
-                $this->Cell($width_other,$cHeight,iconv('UTF-8', 'ISO-8859-2', $this->currency.' '.number_format($item['price'],2,$this->referenceformat[0],$this->referenceformat[1])),0,0,'C',1);
+                $this->Cell($width_other,$cHeight,iconv('UTF-8', 'ISO-8859-2',number_format($item['price'],2,$this->referenceformat[0],$this->referenceformat[1]). ' '. $this->currency),0,0,'C',1);
                 if(isset($this->discountField))
                 {
                     $this->Cell($this->columnSpacing,$cHeight,'',0,0,'L',0);
@@ -381,7 +381,7 @@ class Invoice extends Rotation
                     }
                 }
                 $this->Cell($this->columnSpacing,$cHeight,'',0,0,'L',0);
-                $this->Cell($width_other,$cHeight,iconv('UTF-8', 'ISO-8859-2', $this->currency.' '.number_format($item['total'],2,$this->referenceformat[0],$this->referenceformat[1])),0,0,'C',1);
+                $this->Cell($width_other,$cHeight,iconv('UTF-8', 'ISO-8859-2', number_format($item['total'],2,$this->referenceformat[0],$this->referenceformat[1]). ' '. $this->currency),0,0,'C',1);
                 $this->Ln();
                 $this->Ln($this->columnSpacing);
             }
