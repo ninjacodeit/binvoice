@@ -2,6 +2,7 @@
   "name": "ninjacodeit/binvoice",
   "description": "",
   "license": "MIT",
+  "type": "library",
   "keywords": ["binvoice"],
   "authors": [
     {
@@ -15,7 +16,7 @@
   },
   "autoload": {
     "psr-0": {
-      "NinjaCodeIT\\BInovice": "src/"
+      "Ninjacode\\Binovice": "src/"
     }
   }
 }
