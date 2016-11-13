@@ -208,7 +208,7 @@ class Invoice extends Rotation
         $this->SetFont($this->font,'',9);
         $this->SetTextColor($this->color[0],$this->color[1],$this->color[2]);
         $this->Cell(32,$lineheight,iconv("UTF-8", "ISO-8859-2",strtoupper($this->l['date'])).':',0,0,'L');
-//		$this->Cell(32,$lineheight,iconv("UTF-8", "windows-1252", strtoupper(iconv("UTF-8", "iso-8859-1",$this->l['date']))).':',0,0,'L');
+//		$this->Cell(32,$lineheight,iconv("UTF-8", "ISO-8859-2", strtoupper(iconv("UTF-8", "iso-8859-1",$this->l['date']))).':',0,0,'L');
         $this->SetTextColor(50,50,50);
         $this->SetFont($this->font,'',9);
         $this->Cell(0,$lineheight,$this->date,0,1,'R');
@@ -219,8 +219,7 @@ class Invoice extends Rotation
             $this->Cell($positionX,$lineheight);
             $this->SetFont($this->font,'',9);
             $this->SetTextColor($this->color[0],$this->color[1],$this->color[2]);
-            $dude = $this->l['due'];
-            $this->Cell(32,$lineheight,strtoupper('Termin PŁĄTNOŚCI').':',0,0,'L');
+            $this->Cell(32,$lineheight,iconv("UTF-8", "ISO-8859-2",$this->l['due']).':',0,0,'L');
             $this->SetTextColor(50,50,50);
             $this->SetFont($this->font,'',9);
             $this->Cell(0,$lineheight,$this->due,0,1,'R');
@@ -366,15 +365,15 @@ class Invoice extends Rotation
                 $this->Cell($this->columnSpacing,$cHeight,'',0,0,'L',0);
                 $this->Cell($width_other,$cHeight,$item['quantity'],0,0,'C',1);
                 $this->Cell($this->columnSpacing,$cHeight,'',0,0,'L',0);
-                $this->Cell($width_other,$cHeight,iconv('UTF-8', 'windows-1252', $item['vat']),0,0,'C',1);
+                $this->Cell($width_other,$cHeight,iconv('UTF-8', 'ISO-8859-2', $item['vat']),0,0,'C',1);
                 $this->Cell($this->columnSpacing,$cHeight,'',0,0,'L',0);
-                $this->Cell($width_other,$cHeight,iconv('UTF-8', 'windows-1252', $this->currency.' '.number_format($item['price'],2,$this->referenceformat[0],$this->referenceformat[1])),0,0,'C',1);
+                $this->Cell($width_other,$cHeight,iconv('UTF-8', 'ISO-8859-2', $this->currency.' '.number_format($item['price'],2,$this->referenceformat[0],$this->referenceformat[1])),0,0,'C',1);
                 if(isset($this->discountField))
                 {
                     $this->Cell($this->columnSpacing,$cHeight,'',0,0,'L',0);
                     if(isset($item['discount']))
                     {
-                        $this->Cell($width_other,$cHeight,iconv('UTF-8', 'windows-1252',$item['discount']),0,0,'C',1);
+                        $this->Cell($width_other,$cHeight,iconv('UTF-8', 'ISO-8859-2',$item['discount']),0,0,'C',1);
                     }
                     else
                     {
@@ -382,7 +381,7 @@ class Invoice extends Rotation
                     }
                 }
                 $this->Cell($this->columnSpacing,$cHeight,'',0,0,'L',0);
-                $this->Cell($width_other,$cHeight,iconv('UTF-8', 'windows-1252', $this->currency.' '.number_format($item['total'],2,$this->referenceformat[0],$this->referenceformat[1])),0,0,'C',1);
+                $this->Cell($width_other,$cHeight,iconv('UTF-8', 'ISO-8859-2', $this->currency.' '.number_format($item['total'],2,$this->referenceformat[0],$this->referenceformat[1])),0,0,'C',1);
                 $this->Ln();
                 $this->Ln($this->columnSpacing);
             }
@@ -411,7 +410,7 @@ class Invoice extends Rotation
                 }
                 $this->SetFont($this->font,'',8);
                 $this->Cell(1,$cellHeight,'',0,0,'L',1);
-                $this->Cell($width_other-1,$cellHeight,iconv('UTF-8', 'windows-1252',$total['name']),0,0,'L',1);
+                $this->Cell($width_other-1,$cellHeight,iconv('UTF-8', 'ISO-8859-2',$total['name']),0,0,'L',1);
                 $this->Cell($this->columnSpacing,$cellHeight,'',0,0,'L',0);
                 $this->SetFont($this->font,'',8);
                 $this->SetFillColor($bgcolor,$bgcolor,$bgcolor);
@@ -420,7 +419,7 @@ class Invoice extends Rotation
                     $this->SetTextColor(255,255,255);
                     $this->SetFillColor($this->color[0],$this->color[1],$this->color[2]);
                 }
-                $this->Cell($width_other,$cellHeight,iconv('UTF-8', 'windows-1252',$total['value']),0,0,'C',1);
+                $this->Cell($width_other,$cellHeight,iconv('UTF-8', 'ISO-8859-2',$total['value']),0,0,'C',1);
                 $this->Ln();
                 $this->Ln($this->columnSpacing);
             }
@@ -497,7 +496,7 @@ class Invoice extends Rotation
     {
         $l['number'] 						= 'Numer faktury';
         $l['date'] 							= 'Data wystawienia';
-        $l['due'] 							= 'Tremin płatności';
+        $l['due'] 							= 'TERMIN PŁATNOŚCI';
         $l['to'] 							= 'Klient';
         $l['from'] 							= 'Sprzedawca';
         $l['product'] 						= 'Produkt';
