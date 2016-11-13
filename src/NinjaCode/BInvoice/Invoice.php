@@ -264,8 +264,9 @@ class Invoice extends Rotation
             $this->Ln(5);
             $this->SetTextColor(50,50,50);
             $this->SetFont($this->font,'',10);
-            $this->Cell($width,$lineheight,$this->from[0],0,0,'L');
-            $this->Cell(0,$lineheight,$this->to[0],0,0,'L');
+            $this->SetFont($this->font,'',10);
+            $this->Cell($width,$lineheight,iconv("UTF-8", "ISO-8859-2",$this->from[0]),0,0,'L');
+            $this->Cell(0,$lineheight,iconv("UTF-8", "ISO-8859-2", $this->to[0]),0,0,'L');
             $this->SetFont($this->font,'',8);
             $this->SetTextColor(100,100,100);
             $this->Ln(7);
@@ -501,10 +502,10 @@ class Invoice extends Rotation
         $l['from'] 							= 'Sprzedawca';
         $l['product'] 						= 'Produkt';
         $l['amount'] 						= 'ILOŚĆ';
-        $l['price'] 						= 'Cena';
+        $l['price'] 						= 'Cena NETTO';
         $l['discount'] 						= 'Rabat';
         $l['vat'] 							= 'VAT';
-        $l['total'] 						= 'Razem';
+        $l['total'] 						= 'WARTOŚĆ NETTO';
         $l['page'] 							= 'Strona';
         $l['page_of'] 						= 'z';
         $this->l = $l;
